@@ -4,6 +4,7 @@ import 'package:happy_family/features/main_page/bloc/info_cubit.dart';
 import 'package:happy_family/features/main_page/bloc/info_state.dart';
 
 import '../../common/constants/project_indent.dart';
+import '../../common/widgets/animated_skeleton.dart';
 
 class TemperatureRow extends StatelessWidget {
   const TemperatureRow({
@@ -36,9 +37,7 @@ class TemperatureRow extends StatelessWidget {
                 ),
               )
             else if (state is LoadingInfoState)
-              CircularProgressIndicator(
-                color: Colors.purple.shade700,
-              ),
+              const AnimatedSkeleton(),
           ],
         );
       },

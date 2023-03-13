@@ -1,7 +1,6 @@
 import 'package:happy_family/features/main_page/models/info_weather.dart';
 
 import '../data_providers/weather_data_provider.dart';
-import '../models/weather.dart';
 
 abstract class IweatherService {
   Future<InfoWeather> getWeather(String city);
@@ -18,13 +17,13 @@ class WeatherService implements IweatherService {
     final weather = await _dataProvider.getWeather(city);
     final String advice;
     if (weather.current.tempC > 25) {
-      advice = 'It\'s hot outside';
+      advice = 'It\'s hot outside, take a hat or better stay at home';
     } else if (weather.current.tempC < 5) {
       advice = 'It\'s cold outside, take a jacket';
     } else if (weather.current.tempC > 7 && weather.current.tempC < 18) {
       advice = 'It\'s cool outside, nice time for riding';
     } else if (weather.current.tempC > 18 && weather.current.tempC < 25) {
-      advice = 'It\'s warm outside, take a jacket';
+      advice = 'It\'s warm outside, take a water';
     } else {
       advice = 'Mmm...';
     }

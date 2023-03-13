@@ -4,11 +4,12 @@ import 'package:happy_family/features/main_page/bloc/info_cubit.dart';
 import 'package:happy_family/features/main_page/bloc/info_state.dart';
 
 import '../../common/constants/project_indent.dart';
+import '../../common/widgets/animated_skeleton.dart';
 
 class AdviceRow extends StatelessWidget {
   const AdviceRow({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class AdviceRow extends StatelessWidget {
                 ),
               )
             else if (state is LoadingInfoState)
-              const CircularProgressIndicator(),
+              const AnimatedSkeleton(),
           ],
         );
       },
