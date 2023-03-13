@@ -7,6 +7,7 @@ import 'package:happy_family/features/auth/bloc/login_cubit.dart';
 import 'package:happy_family/features/auth/bloc/signup_cubit.dart';
 import 'features/app_router/app_router.dart';
 import 'features/auth/services/auth_repository.dart';
+import 'features/main_page/services/geolocator_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,8 +20,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => AuthRepository(),
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider<AuthRepository>(
+          create: (context) => AuthRepository(),
+        ),
+        RepositoryProvider<GeolocatorRepository>(
+          create: (context) => GeolocatorRepository(),
+        ),
+      ],
       child: Builder(builder: (context) {
         return MultiBlocProvider(
           providers: [
