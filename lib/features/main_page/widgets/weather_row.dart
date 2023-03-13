@@ -30,7 +30,7 @@ class WeatherRow extends StatelessWidget {
             ),
             if (state is LoadedInfoState && imageUrl != null)
               Image.network(imageUrl, width: 30, height: 30)
-            else
+            else if (state is LoadingInfoState)
               CircularProgressIndicator(
                 color: Colors.purple.shade700,
               ),

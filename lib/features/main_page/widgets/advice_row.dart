@@ -38,7 +38,9 @@ class AdviceRow extends StatelessWidget {
                     fontSize: 16,
                   ),
                 ),
-              ),
+              )
+            else if (state is LoadingInfoState)
+              const CircularProgressIndicator(),
           ],
         );
       },

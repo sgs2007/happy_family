@@ -35,7 +35,7 @@ class TemperatureRow extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               )
-            else
+            else if (state is LoadingInfoState)
               CircularProgressIndicator(
                 color: Colors.purple.shade700,
               ),
