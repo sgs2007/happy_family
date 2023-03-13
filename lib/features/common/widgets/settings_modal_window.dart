@@ -32,7 +32,7 @@ class _SettingsModalWindowState extends State<SettingsModalWindow> {
           horizontal: ProjectIndent.i2,
         ),
         decoration: BoxDecoration(
-          color: Colors.purple.shade700,
+          color: Colors.grey.shade100,
           borderRadius: const BorderRadius.vertical(
             top: Radius.circular(20),
           ),
@@ -55,7 +55,7 @@ class _SettingsModalWindowState extends State<SettingsModalWindow> {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
             ),
@@ -63,39 +63,39 @@ class _SettingsModalWindowState extends State<SettingsModalWindow> {
             const ListTile(
               leading: Icon(
                 Icons.person,
-                color: Colors.white,
+                color: Colors.black,
               ),
               title: Text(
                 'Profile',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
             ),
             const Divider(
-              color: Colors.white,
+              color: Colors.black,
             ),
             const ListTile(
               leading: Icon(
                 Icons.notifications,
-                color: Colors.white,
+                color: Colors.black,
               ),
               title: Text(
                 'Notifications',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
             ),
             const Divider(
-              color: Colors.white,
+              color: Colors.black,
             ),
             ListTile(
-              leading: const Icon(Icons.logout, color: Colors.white),
+              leading: const Icon(Icons.logout, color: Colors.black),
               title: const Text(
                 'Logout',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               onTap: () => context.read<AuthBloc>().add(
