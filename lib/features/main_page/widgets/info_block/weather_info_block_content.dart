@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../common/constants/project_indent.dart';
+import '../../../common/constants/project_indent.dart';
 import 'advice_row.dart';
 import 'date_row.dart';
 import 'temperature_row.dart';

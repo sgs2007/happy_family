@@ -4,10 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:happy_family/features/common/constants/project_indent.dart';
 import 'package:intl/intl.dart';
 
-import '../../../design/typography.dart';
-import '../../common/widgets/animated_skeleton.dart';
-import '../bloc/info_cubit.dart';
-import '../bloc/info_state.dart';
+import '../../../../design/typography.dart';
+import '../../../common/widgets/animated_skeleton.dart';
+import '../../bloc/info_cubit.dart';
+import '../../bloc/info_state.dart';
 
 class DateRow extends StatefulWidget {
   const DateRow({super.key});

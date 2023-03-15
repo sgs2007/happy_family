@@ -4,9 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:happy_family/features/main_page/bloc/info_cubit.dart';
 import 'package:happy_family/features/main_page/bloc/info_state.dart';
 
-import '../../../design/typography.dart';
-import '../../common/constants/project_indent.dart';
-import '../../common/widgets/animated_skeleton.dart';
+import '../../../../design/typography.dart';
+import '../../../common/constants/project_indent.dart';
+import '../../../common/widgets/animated_skeleton.dart';
 
 class WeatherRow extends StatelessWidget {
   const WeatherRow({

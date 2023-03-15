@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:happy_family/design/typography.dart';
 import 'package:happy_family/features/main_page/bloc/info_cubit.dart';
 import 'package:happy_family/features/main_page/bloc/info_state.dart';
 
-import '../../../design/typography.dart';
-import '../../common/constants/project_indent.dart';
-import '../../common/widgets/animated_skeleton.dart';
+import '../../../common/constants/project_indent.dart';
+import '../../../common/widgets/animated_skeleton.dart';
 
-class AdviceRow extends StatelessWidget {
-  const AdviceRow({
+class TemperatureRow extends StatelessWidget {
+  const TemperatureRow({
     super.key,
   });
 
@@ -17,28 +17,20 @@ class AdviceRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<InfoCubit, InfoState>(
       builder: (context, state) {
-        final advice = state.weather?.advice;
+        final temperature = state.weather?.weather.current.tempC;
         return Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Best day for:',
+              'Temperature:',
               style: GoogleFonts.roboto(textStyle: ProjectTypography.largeMainStyleBold),
             ),
             const SizedBox(
               width: ProjectIndent.i1,
             ),
-            if (state is LoadedInfoState && advice != null)
-              Expanded(
-                child: Text(
-                  advice,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                  style: GoogleFonts.roboto(
-                      textStyle: ProjectTypography.middleMainStyle.copyWith(
-                    fontWeight: FontWeight.normal,
-                  )),
-                ),
+            if (state is LoadedInfoState && temperature != null)
+              Text(
+                temperature.toString(),
+                style: GoogleFonts.roboto(textStyle: ProjectTypography.middleMainStyle),
               )
             else if (state is LoadingInfoState)
               const AnimatedSkeleton(),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../design/typography.dart';
-import '../../common/constants/project_indent.dart';
-import '../../common/widgets/decorated_circle_container.dart';
+import '../../../../design/typography.dart';
+import '../../../common/constants/project_indent.dart';
+import '../../../common/widgets/decorated_circle_container.dart';
 
 class TitleInfoRow extends StatelessWidget {
   const TitleInfoRow({

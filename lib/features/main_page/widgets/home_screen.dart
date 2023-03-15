@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:happy_family/features/common/constants/project_indent.dart';
 
-import 'info_block.dart';
+import 'family_events_block/family_events_block.dart';
+import 'info_block/info_block.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -23,10 +24,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(
               height: ProjectIndent.i3,
             ),
-            Container(
-              width: double.infinity,
-              height: 400,
-            ),
+            FamilyEventsBlock(),
           ],
         ),
       ),
