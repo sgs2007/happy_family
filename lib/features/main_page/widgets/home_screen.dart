@@ -15,11 +15,18 @@ class HomeScreen extends StatelessWidget {
           horizontal: ProjectIndent.i2,
         ),
         child: ListView(
-          children: const [
-            SizedBox(
+          children: [
+            const SizedBox(
               height: ProjectIndent.i3,
             ),
-            InfoBlock(),
+            const InfoBlock(),
+            const SizedBox(
+              height: ProjectIndent.i3,
+            ),
+            Container(
+              width: double.infinity,
+              height: 400,
+            ),
           ],
         ),
       ),

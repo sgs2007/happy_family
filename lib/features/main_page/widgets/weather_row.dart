@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:happy_family/features/main_page/bloc/info_cubit.dart';
 import 'package:happy_family/features/main_page/bloc/info_state.dart';
 
+import '../../../design/typography.dart';
 import '../../common/constants/project_indent.dart';
 import '../../common/widgets/animated_skeleton.dart';
 
@@ -19,18 +21,15 @@ class WeatherRow extends StatelessWidget {
         final text = state.weather?.weather.current.condition.text;
         return Row(
           children: [
-            const Text(
+            Text(
               'Weather today:',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+              style: GoogleFonts.roboto(textStyle: ProjectTypography.largeMainStyleBold),
             ),
             const SizedBox(
               width: ProjectIndent.i1,
             ),
             if (state is LoadedInfoState && imageUrl != null && text != null) ...[
-              Image.network(imageUrl, width: 30, height: 30),
+              Image.network(imageUrl, width: 35, height: 35),
               const SizedBox(
                 width: ProjectIndent.i1,
               ),
@@ -38,7 +37,7 @@ class WeatherRow extends StatelessWidget {
                 child: Text(
                   text,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(fontSize: 16),
+                  style: GoogleFonts.roboto(textStyle: ProjectTypography.middleMainStyle),
                 ),
               ),
             ] else if (state is LoadedInfoState)

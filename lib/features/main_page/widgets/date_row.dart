@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:happy_family/features/common/constants/project_indent.dart';
 import 'package:intl/intl.dart';
 
+import '../../../design/typography.dart';
 import '../../common/widgets/animated_skeleton.dart';
 import '../bloc/info_cubit.dart';
 import '../bloc/info_state.dart';
@@ -27,23 +30,20 @@ class _DateRowState extends State<DateRow> {
     return BlocBuilder<InfoCubit, InfoState>(
       builder: (context, state) {
         final city = state.weather?.weather.location.name;
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              currentDate,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+              'Date: $currentDate',
+              style: GoogleFonts.roboto(textStyle: ProjectTypography.largeMainStyleBold),
+            ),
+            const SizedBox(
+              height: ProjectIndent.i1,
             ),
             if (state is LoadedInfoState && city != null)
               Text(
-                city,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+                'Current location: $city',
+                style: GoogleFonts.roboto(textStyle: ProjectTypography.largeMainStyleBold),
               )
             else if (state is LoadingInfoState)
               const AnimatedSkeleton(height: 18, width: 100),

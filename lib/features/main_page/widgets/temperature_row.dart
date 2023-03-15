@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:happy_family/design/typography.dart';
 import 'package:happy_family/features/main_page/bloc/info_cubit.dart';
 import 'package:happy_family/features/main_page/bloc/info_state.dart';
 
@@ -18,12 +20,9 @@ class TemperatureRow extends StatelessWidget {
         final temperature = state.weather?.weather.current.tempC;
         return Row(
           children: [
-            const Text(
+            Text(
               'Temperature:',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+              style: GoogleFonts.roboto(textStyle: ProjectTypography.largeMainStyleBold),
             ),
             const SizedBox(
               width: ProjectIndent.i1,
@@ -31,10 +30,7 @@ class TemperatureRow extends StatelessWidget {
             if (state is LoadedInfoState && temperature != null)
               Text(
                 temperature.toString(),
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: GoogleFonts.roboto(textStyle: ProjectTypography.middleMainStyle),
               )
             else if (state is LoadingInfoState)
               const AnimatedSkeleton(),

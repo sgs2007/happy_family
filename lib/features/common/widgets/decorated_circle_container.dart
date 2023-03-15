@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../constants/project_indent.dart';
-
-class DecoratedInfoContainer extends StatelessWidget {
-  const DecoratedInfoContainer({
+class DecoratedCircleContainer extends StatelessWidget {
+  const DecoratedCircleContainer({
     super.key,
     required this.child,
   });
@@ -12,14 +10,8 @@ class DecoratedInfoContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: ProjectIndent.i2,
-        vertical: ProjectIndent.i2,
-      ),
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(40),
-        ),
+        shape: BoxShape.circle,
         border: Border.all(
           color: Colors.purple.shade700,
           width: 1,
