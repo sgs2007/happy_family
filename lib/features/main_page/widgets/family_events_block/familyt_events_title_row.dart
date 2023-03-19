@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../common/constants/project_indent.dart';
 import '../../../common/widgets/decorated_circle_container.dart';
+import 'add_events_modal_window.dart';
 
 class FamilyEventsTitleRow extends StatelessWidget {
   const FamilyEventsTitleRow({
@@ -25,14 +26,20 @@ class FamilyEventsTitleRow extends StatelessWidget {
         ),
         DecoratedCircleContainer(
           child: IconButton(
-            onPressed: () {},
+            onPressed: _addEvent(context),
             icon: const Icon(
               Icons.add,
-              size: 30,
             ),
           ),
         ),
       ],
     );
   }
+
+  VoidCallback _addEvent(BuildContext context) => () => showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (context) => const AddEventsModalWindow(),
+      );
 }

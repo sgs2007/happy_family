@@ -26,7 +26,9 @@ class TitleInfoRow extends StatelessWidget {
         ),
         DecoratedCircleContainer(
           child: IconButton(
-            icon: const Icon(Icons.more_horiz_sharp, size: 30),
+            icon: const Icon(
+              Icons.more_horiz_sharp,
+            ),
             onPressed: () {},
           ),
         ),

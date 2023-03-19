@@ -24,7 +24,7 @@ class DecoratedInfoContainer extends StatelessWidget {
           color: Colors.purple.shade700,
           width: 1,
         ),
-        color: Colors.grey.shade300,
+        color: Colors.grey.shade200,
         boxShadow: [
           const BoxShadow(
             color: Colors.white,

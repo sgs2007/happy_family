@@ -36,14 +36,6 @@ class _SettingsModalWindowState extends State<SettingsModalWindow> {
           borderRadius: const BorderRadius.vertical(
             top: Radius.circular(20),
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.shade300,
-              spreadRadius: 1,
-              blurRadius: 6,
-              offset: const Offset(0, -1),
-            ),
-          ],
         ),
         child: ListView(
           controller: _scrollController,

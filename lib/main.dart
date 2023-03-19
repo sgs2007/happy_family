@@ -1,10 +1,14 @@
 // ignore: depend_on_referenced_packages
+import 'package:logger/logger.dart';
+// ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:happy_family/features/auth/bloc/auth_bloc.dart';
 import 'package:happy_family/features/auth/bloc/login_cubit.dart';
 import 'package:happy_family/features/auth/bloc/signup_cubit.dart';
+
 import 'features/app_router/app_router.dart';
 import 'features/auth/services/auth_repository.dart';
 import 'features/main_page/services/geolocator_repository.dart';
@@ -28,6 +32,7 @@ class MyApp extends StatelessWidget {
         RepositoryProvider<GeolocatorRepository>(
           create: (context) => GeolocatorRepository(),
         ),
+        RepositoryProvider(create: (context) => Logger()),
       ],
       child: Builder(builder: (context) {
         return MultiBlocProvider(
