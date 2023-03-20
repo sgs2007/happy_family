@@ -20,6 +20,8 @@ mixin _$Event {
   String get description => throw _privateConstructorUsedError;
   DateTime get from => throw _privateConstructorUsedError;
   DateTime get to => throw _privateConstructorUsedError;
+  Color get backgroundColor => throw _privateConstructorUsedError;
+  bool get isAllDay => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventCopyWith<Event> get copyWith => throw _privateConstructorUsedError;
@@ -30,7 +32,13 @@ abstract class $EventCopyWith<$Res> {
   factory $EventCopyWith(Event value, $Res Function(Event) then) =
       _$EventCopyWithImpl<$Res, Event>;
   @useResult
-  $Res call({String name, String description, DateTime from, DateTime to});
+  $Res call(
+      {String name,
+      String description,
+      DateTime from,
+      DateTime to,
+      Color backgroundColor,
+      bool isAllDay});
 }
 
 /// @nodoc
@@ -50,6 +58,8 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
     Object? description = null,
     Object? from = null,
     Object? to = null,
+    Object? backgroundColor = null,
+    Object? isAllDay = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -68,6 +78,14 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      backgroundColor: null == backgroundColor
+          ? _value.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
+              as Color,
+      isAllDay: null == isAllDay
+          ? _value.isAllDay
+          : isAllDay // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -78,7 +96,13 @@ abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
       __$$_EventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String description, DateTime from, DateTime to});
+  $Res call(
+      {String name,
+      String description,
+      DateTime from,
+      DateTime to,
+      Color backgroundColor,
+      bool isAllDay});
 }
 
 /// @nodoc
@@ -94,6 +118,8 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
     Object? description = null,
     Object? from = null,
     Object? to = null,
+    Object? backgroundColor = null,
+    Object? isAllDay = null,
   }) {
     return _then(_$_Event(
       name: null == name
@@ -112,6 +138,14 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      backgroundColor: null == backgroundColor
+          ? _value.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
+              as Color,
+      isAllDay: null == isAllDay
+          ? _value.isAllDay
+          : isAllDay // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -123,7 +157,9 @@ class _$_Event implements _Event {
       {required this.name,
       required this.description,
       required this.from,
-      required this.to});
+      required this.to,
+      this.backgroundColor = Colors.purple,
+      this.isAllDay = false});
 
   @override
   final String name;
@@ -133,10 +169,16 @@ class _$_Event implements _Event {
   final DateTime from;
   @override
   final DateTime to;
+  @override
+  @JsonKey()
+  final Color backgroundColor;
+  @override
+  @JsonKey()
+  final bool isAllDay;
 
   @override
   String toString() {
-    return 'Event(name: $name, description: $description, from: $from, to: $to)';
+    return 'Event(name: $name, description: $description, from: $from, to: $to, backgroundColor: $backgroundColor, isAllDay: $isAllDay)';
   }
 
   @override
@@ -148,11 +190,16 @@ class _$_Event implements _Event {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.from, from) || other.from == from) &&
-            (identical(other.to, to) || other.to == to));
+            (identical(other.to, to) || other.to == to) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.isAllDay, isAllDay) ||
+                other.isAllDay == isAllDay));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, description, from, to);
+  int get hashCode => Object.hash(
+      runtimeType, name, description, from, to, backgroundColor, isAllDay);
 
   @JsonKey(ignore: true)
   @override
@@ -166,7 +213,9 @@ abstract class _Event implements Event {
       {required final String name,
       required final String description,
       required final DateTime from,
-      required final DateTime to}) = _$_Event;
+      required final DateTime to,
+      final Color backgroundColor,
+      final bool isAllDay}) = _$_Event;
 
   @override
   String get name;
@@ -176,6 +225,10 @@ abstract class _Event implements Event {
   DateTime get from;
   @override
   DateTime get to;
+  @override
+  Color get backgroundColor;
+  @override
+  bool get isAllDay;
   @override
   @JsonKey(ignore: true)
   _$$_EventCopyWith<_$_Event> get copyWith =>

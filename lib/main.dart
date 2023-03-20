@@ -11,6 +11,7 @@ import 'package:happy_family/features/auth/bloc/signup_cubit.dart';
 
 import 'features/app_router/app_router.dart';
 import 'features/auth/services/auth_repository.dart';
+import 'features/main_page/bloc/event_cubit.dart';
 import 'features/main_page/services/geolocator_repository.dart';
 
 void main() async {
@@ -52,11 +53,18 @@ class MyApp extends StatelessWidget {
                 context.read<AuthRepository>(),
               ),
             ),
+            BlocProvider<EventCubit>(
+              create: (context) => EventCubit(
+                logger: context.read<Logger>(),
+              ),
+            ),
           ],
           child: Builder(builder: (context) {
             return MaterialApp.router(
               title: 'Happy family',
-              routerConfig: AppRouter(authBloc: context.read<AuthBloc>()).router,
+              routerConfig: AppRouter(
+                authBloc: context.read<AuthBloc>(),
+              ).router,
             );
           }),
         );

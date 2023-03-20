@@ -15,30 +15,46 @@ class ProjectFormTimePicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        ReactiveTimePicker(
-          formControlName: formControllName,
-          builder: (context, picker, child) => IconButton(
-            onPressed: () => picker.showPicker(),
-            icon: Icon(
-              Icons.access_time,
-              color: Colors.purple.shade400,
+    return ReactiveTimePicker(
+      formControlName: formControllName,
+      builder: (context, picker, child) => TextButton(
+        style: TextButton.styleFrom(
+          foregroundColor: Colors.purple.shade200,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              color: Colors.purple.shade200,
+            ),
+            borderRadius: BorderRadius.circular(
+              ProjectIndent.i2,
             ),
           ),
+          padding: const EdgeInsets.symmetric(
+            horizontal: ProjectIndent.i2,
+            vertical: ProjectIndent.i1,
+          ),
         ),
-        const SizedBox(
-          width: ProjectIndent.i2,
-        ),
-        ReactiveValueListenableBuilder<TimeOfDay>(
-            builder: (context, value, child) => Text(
-                  'Event time: ${value.value!.format(context)}',
-                  style: GoogleFonts.roboto(
-                    textStyle: ProjectTypography.largeMainStyleBold,
+        onPressed: () => picker.showPicker(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ReactiveValueListenableBuilder<TimeOfDay>(
+              builder: (context, value, child) => Text(
+                value.value!.format(context),
+                style: GoogleFonts.roboto(
+                  textStyle: ProjectTypography.middleMainStyle.copyWith(
+                    color: Colors.grey.shade700,
                   ),
                 ),
-            formControlName: formControllName),
-      ],
+              ),
+              formControlName: formControllName,
+            ),
+            const Icon(
+              Icons.arrow_drop_down,
+              color: Colors.purple,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

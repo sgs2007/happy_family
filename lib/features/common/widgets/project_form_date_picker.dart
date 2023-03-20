@@ -10,43 +10,68 @@ class ProjectFormDatePicker extends StatelessWidget {
   const ProjectFormDatePicker({
     super.key,
     required this.formControllName,
+    required this.title,
   });
 
   final String formControllName;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        ReactiveDatePicker(
-          formControlName: formControllName,
-          firstDate: DateTime.now(),
-          lastDate: DateTime.now().add(
-            const Duration(
-              days: 365,
+    return ReactiveDatePicker(
+      formControlName: formControllName,
+      firstDate: DateTime.now(),
+      lastDate: DateTime.now().add(
+        const Duration(
+          days: 365,
+        ),
+      ),
+      builder: (context, picker, child) => TextButton(
+        style: TextButton.styleFrom(
+          foregroundColor: Colors.purple.shade200,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              color: Colors.purple.shade200,
+            ),
+            borderRadius: BorderRadius.circular(
+              ProjectIndent.i2,
             ),
           ),
-          builder: (context, picker, child) => IconButton(
-            onPressed: () => picker.showPicker(),
-            icon: Icon(
-              Icons.calendar_today,
-              color: Colors.purple.shade300,
-            ),
+          padding: const EdgeInsets.symmetric(
+            horizontal: ProjectIndent.i2,
+            vertical: ProjectIndent.i1,
           ),
         ),
-        const SizedBox(
-          width: ProjectIndent.i2,
-        ),
-        ReactiveValueListenableBuilder<DateTime>(
-          builder: (context, value, child) => Text(
-            'Event date: ${DateFormat('dd.MM.yyyy').format(value.value!)}',
-            style: GoogleFonts.roboto(
-              textStyle: ProjectTypography.largeMainStyleBold,
+        onPressed: () => picker.showPicker(),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: GoogleFonts.roboto(
+                textStyle: ProjectTypography.middleMainStyle.copyWith(
+                  color: Colors.grey.shade700,
+                ),
+              ),
             ),
-          ),
-          formControlName: formControllName,
+            ReactiveValueListenableBuilder<DateTime>(
+              builder: (context, value, child) => Text(
+                DateFormat('dd.MM.yyyy').format(value.value!),
+                style: GoogleFonts.roboto(
+                  textStyle: ProjectTypography.largeMainStyleBold.copyWith(
+                    color: Colors.grey.shade700,
+                  ),
+                ),
+              ),
+              formControlName: formControllName,
+            ),
+            Icon(
+              Icons.calendar_month,
+              color: Colors.purple.shade200,
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

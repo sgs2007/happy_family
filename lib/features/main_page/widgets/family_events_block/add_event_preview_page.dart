@@ -9,30 +9,57 @@ const previewText =
 class AddEventPreviewPage extends StatelessWidget {
   const AddEventPreviewPage({
     super.key,
+    required this.pageController,
   });
+
+  final PageController pageController;
 
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        Row(
+        Column(
           children: [
-            Expanded(
-              child: Text(
-                previewText,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 6,
-                style: GoogleFonts.roboto(
-                  textStyle: ProjectTypography.largeMainStyleBold,
-                ),
+            Text(
+              previewText,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 6,
+              style: GoogleFonts.roboto(
+                textStyle: ProjectTypography.largeMainStyleBold,
               ),
             ),
             const SizedBox(
-              width: ProjectIndent.i1,
+              height: ProjectIndent.i2,
             ),
-            const Icon(
-              Icons.arrow_right_alt_sharp,
-              size: 40,
+            Align(
+              alignment: Alignment.centerRight,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: ProjectIndent.i2,
+                  ),
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.purple.shade700,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(ProjectIndent.i1),
+                    ),
+                  ),
+                ),
+                onPressed: () => pageController.animateToPage(
+                  1,
+                  duration: const Duration(
+                    milliseconds: 800,
+                  ),
+                  curve: Curves.ease,
+                ),
+                child: Text(
+                  'Add event',
+                  style: GoogleFonts.roboto(
+                    textStyle: ProjectTypography.largeMainStyleBold,
+                  ),
+                ),
+              ),
             ),
           ],
         ),
